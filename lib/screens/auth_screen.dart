@@ -1,14 +1,13 @@
+import 'package:first_chat_app/main.dart';
+import 'package:first_chat_app/screens/home_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:first_chat_app/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthScreen extends StatefulWidget {
-  const AuthScreen({Key? key}) : super(key: key);
-
   @override
-  State<AuthScreen> createState() => _AuthScreenState();
+  _AuthScreenState createState() => _AuthScreenState();
 }
 
 class _AuthScreenState extends State<AuthScreen> {
@@ -26,13 +25,23 @@ class _AuthScreenState extends State<AuthScreen> {
     UserCredential userCredential =
         await FirebaseAuth.instance.signInWithCredential(credential);
 
-    await firestore.collection('users').doc(userCredential.user!.uid).set({
-      'email': userCredential.user!.email,
-      'name': userCredential.user!.displayName,
-      'image': userCredential.user!.photoURL,
-      'uid': userCredential.user!.uid,
-      'date': DateTime.now(),
-    });
+    DocumentSnapshot userExist =
+        await firestore.collection('users').doc(userCredential.user!.uid).get();
+
+    if (userExist.exists) {
+      print("User Already Exists in Database");
+    } else {
+      await firestore.collection('users').doc(userCredential.user!.uid).set({
+        'email': userCredential.user!.email,
+        'name': userCredential.user!.displayName,
+        'image': userCredential.user!.photoURL,
+        'uid': userCredential.user!.uid,
+        'date': DateTime.now(),
+      });
+    }
+
+    Navigator.pushAndRemoveUntil(context,
+        MaterialPageRoute(builder: (context) => MyApp()), (route) => false);
   }
 
   @override
@@ -45,8 +54,6 @@ class _AuthScreenState extends State<AuthScreen> {
             children: [
               Expanded(
                 child: Container(
-                  // height: 100,
-                  // width: 100,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
@@ -56,12 +63,12 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
               Text(
-                "Secure chat app",
-                style: TextStyle(fontSize: 36, fontWeight: FontWeight.w500),
+                "Secure Chat App",
+                style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                 child: ElevatedButton(
                   onPressed: () async {
                     await signInFunction();
@@ -79,9 +86,9 @@ class _AuthScreenState extends State<AuthScreen> {
                         width: 10,
                       ),
                       Text(
-                        "Sign in with google",
+                        "Sign in With Google",
                         style: TextStyle(fontSize: 20),
-                      ),
+                      )
                     ],
                   ),
                   style: ButtonStyle(
@@ -92,9 +99,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                     backgroundColor: MaterialStateProperty.all(Colors.black),
                     padding: MaterialStateProperty.all(
-                      EdgeInsets.symmetric(
-                        vertical: 12,
-                      ),
+                      EdgeInsets.symmetric(vertical: 12),
                     ),
                   ),
                 ),

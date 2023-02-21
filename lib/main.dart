@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:first_chat_app/models/user_model.dart';
 import 'package:first_chat_app/screens/auth_screen.dart';
-import 'package:first_chat_app/screens/search_screen.dart';
+import 'package:first_chat_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -11,38 +13,40 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  // This widget is the root of your application.
 
-  // Future<Widget> userSignedIn() async {
-  //   User? user = FirebaseAuth.instance.currectUser;
-  //   if(user != null){
-  //     return HomeScreen();
-  //   }else{
-  //     return AuthScreen();
-  //   }
-  // }
+  Future<Widget> userSignedIn() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      DocumentSnapshot userData = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get();
+      UserModel userModel = UserModel.fromJson(userData);
+      return HomeScreen(userModel);
+    } else {
+      return AuthScreen();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: SearchScreen(),
-      // home: FutureBuilder(
-      //   future: userSignedIn(),
-      //   builder: (context,AsyncSnapshot<Widget> snapshot){
-      //     if(snapshot.hasData){
-      //       return snapshot.data!;
-      //     }
-      //     return Scaffold(
-      //       body: Center(
-      //         child: CircularProgressIndicator(),
-      //       ),
-      //     )
-      //   },
-      // )
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: FutureBuilder(
+            future: userSignedIn(),
+            builder: (context, AsyncSnapshot<Widget> snapshot) {
+              if (snapshot.hasData) {
+                return snapshot.data!;
+              }
+              return Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }));
   }
 }
