@@ -57,18 +57,20 @@ class _AuthScreenState extends State<AuthScreen> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
-                          "https://www.pngmart.com/files/16/Speech-Chat-Icon-Transparent-PNG.png"),
+                        "https://www.pngmart.com/files/16/Speech-Chat-Icon-Transparent-PNG.png",
+                      ),
+                      scale: 1.8,
                     ),
                   ),
                 ),
               ),
               Text(
                 "Secure Chat App",
-                style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 33, fontWeight: FontWeight.bold),
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: ElevatedButton(
                   onPressed: () async {
                     await signInFunction();
@@ -79,8 +81,8 @@ class _AuthScreenState extends State<AuthScreen> {
                       Image.network(
                         "https://www.freepnglogos.com/uploads/google-logo-png"
                         "/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png",
-                        height: 50,
-                        width: 50,
+                        height: 30,
+                        width: 30,
                       ),
                       SizedBox(
                         width: 10,

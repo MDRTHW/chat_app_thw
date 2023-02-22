@@ -1,7 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_chat_app/models/user_model.dart';
 import 'package:first_chat_app/screens/auth_screen.dart';
+import 'package:first_chat_app/screens/chat_screen.dart';
 import 'package:first_chat_app/screens/search_screen.dart';
+import 'package:first_chat_app/screens/search_screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -33,13 +37,91 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(Icons.logout))
         ],
       ),
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance
+            .collection('users')
+            .doc(widget.user.uid)
+            .collection('messages')
+            .snapshots(),
+        builder: (context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            if (snapshot.data.docs.length < 1) {
+              return Center(
+                child: Text("No chats available"),
+              );
+            }
+            return ListView.builder(
+                itemCount: snapshot.data.docs.length,
+                itemBuilder: (context, index) {
+                  var friendId = snapshot.data.docs[index].id;
+                  var lastMsg = snapshot.data.docs[index]['last_msg'];
+
+                  return FutureBuilder(
+                    future: FirebaseFirestore.instance
+                        .collection('users')
+                        .doc(friendId)
+                        .get(),
+                    builder: (context, AsyncSnapshot asyncSnapshot) {
+                      if (asyncSnapshot.hasData) {
+                        var friend = asyncSnapshot.data;
+                        return Container(
+                          color: Colors.grey.shade200,
+                          child: ListTile(
+                            leading: ClipRRect(
+                              borderRadius: BorderRadius.circular(80),
+                              child: CachedNetworkImage(
+                                imageUrl: friend['image'],
+                                placeholder: (context, url) =>
+                                    CircularProgressIndicator(),
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error_outline),
+                                height: 50,
+                                width: 50,
+                              ),
+                            ),
+                            title: Text(friend['name']),
+                            subtitle: Container(
+                              child: Text(
+                                '$lastMsg',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ChatScreen(
+                                      currentUser: widget.user,
+                                      friendId: friend['uid'],
+                                      friendName: friend['name'],
+                                      friendImage: friend['image']),
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      }
+                      return LinearProgressIndicator();
+                    },
+                  );
+                });
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.teal,
         child: Icon(Icons.search_outlined),
         onPressed: () {
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(
-                  builder: (context) => SearchScreen(widget.user)),
+                  builder: (context) => SearchScreen2(widget.user)),
               (route) => false);
         },
       ),

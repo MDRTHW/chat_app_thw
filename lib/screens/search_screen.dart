@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:first_chat_app/models/user_model.dart';
+import 'package:first_chat_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'chat_screen.dart';
@@ -17,11 +18,13 @@ class _SearchScreenState extends State<SearchScreen> {
   List<Map> searchResult = [];
   bool isLoading = false;
 
+  String name = "";
   void onSearch() async {
     setState(() {
       searchResult = [];
       isLoading = true;
     });
+
     await FirebaseFirestore.instance
         .collection('users')
         .where("name", isEqualTo: searchController.text)
@@ -38,6 +41,7 @@ class _SearchScreenState extends State<SearchScreen> {
       value.docs.forEach((user) {
         if (user.data()['email'] != widget.user.email) {
           searchResult.add(user.data());
+          // print(searchResult);
         }
       });
       setState(() {
@@ -50,6 +54,17 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // automaticallyImplyLeading: true,
+        leading: GestureDetector(
+          child: Icon(Icons.arrow_back_ios_sharp),
+          onTap: () {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => HomeScreen(widget.user)),
+                (route) => false);
+          },
+        ),
         backgroundColor: Colors.teal,
         title: Text("Search your Friend"),
       ),

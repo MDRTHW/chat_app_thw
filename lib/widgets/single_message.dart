@@ -12,7 +12,7 @@ class SingleMessage extends StatelessWidget {
       children: [
         Container(
           padding: EdgeInsets.all(13),
-          margin: EdgeInsets.all(10),
+          margin: EdgeInsets.all(5),
           constraints: BoxConstraints(maxWidth: 200),
           decoration: BoxDecoration(
             color: isMe ? Colors.grey.shade300 : Colors.teal.shade300,

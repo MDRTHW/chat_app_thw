@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:first_chat_app/widgets/message_textfield.dart';
 import 'package:first_chat_app/widgets/single_message.dart';
@@ -27,9 +28,12 @@ class ChatScreen extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(80),
-              child: Image.network(
-                friendImage,
-                height: 35,
+              child: CachedNetworkImage(
+                imageUrl: friendImage,
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error_outline),
+                height: 40,
+                width: 40,
               ),
             ),
             SizedBox(
@@ -46,7 +50,7 @@ class ChatScreen extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.only(bottom: 10, right: 10, left: 10, top: 0),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -67,7 +71,10 @@ class ChatScreen extends StatelessWidget {
                     //check null messages?
                     if (snapshot.data.docs.length < 1) {
                       return Center(
-                        child: Text("-_-"),
+                        child: Text(
+                          "(-_-)",
+                          style: TextStyle(fontSize: 20),
+                        ),
                       );
                     }
                     return ListView.builder(
