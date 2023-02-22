@@ -2,12 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:first_chat_app/models/user_model.dart';
 import 'package:flutter/material.dart';
 
+import 'chat_screen.dart';
+
 class SearchScreen extends StatefulWidget {
   UserModel user;
   SearchScreen(this.user);
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  _SearchScreenState createState() => _SearchScreenState();
 }
 
 class _SearchScreenState extends State<SearchScreen> {
@@ -20,7 +22,6 @@ class _SearchScreenState extends State<SearchScreen> {
       searchResult = [];
       isLoading = true;
     });
-
     await FirebaseFirestore.instance
         .collection('users')
         .where("name", isEqualTo: searchController.text)
@@ -28,7 +29,7 @@ class _SearchScreenState extends State<SearchScreen> {
         .then((value) {
       if (value.docs.length < 1) {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("No user data found")));
+            .showSnackBar(SnackBar(content: Text("No User Found")));
         setState(() {
           isLoading = false;
         });
@@ -36,8 +37,7 @@ class _SearchScreenState extends State<SearchScreen> {
       }
       value.docs.forEach((user) {
         if (user.data()['email'] != widget.user.email) {
-          searchResult.add(user.data() as Map);
-          print(value.docs.length);
+          searchResult.add(user.data());
         }
       });
       setState(() {
@@ -50,62 +50,74 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search for account '),
-        centerTitle: true,
         backgroundColor: Colors.teal,
+        title: Text("Search your Friend"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: TextField(
-                      controller: searchController,
-                      decoration: InputDecoration(
-                        hintText: 'Account Name',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: TextField(
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      hintText: "Search for account",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
                       ),
                     ),
                   ),
                 ),
-                IconButton(
+              ),
+              IconButton(
                   onPressed: () {
                     onSearch();
                   },
-                  icon: Icon(Icons.search_outlined),
-                ),
-              ],
-            ),
-            if (searchResult.length > 0)
-              Expanded(
-                  child: ListView.builder(
-                      itemCount: searchResult.length,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          leading: CircleAvatar(
-                            child: Image.network(searchResult[index]['image']),
-                          ),
-                          title: searchResult[index]['name'],
-                          subtitle: searchResult[index]['email'],
-                          trailing: IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.message_outlined),
-                          ),
-                        );
-                      }))
-            else if (isLoading == true)
-              Center(
-                child: CircularProgressIndicator(),
-              )
-          ],
-        ),
+                  icon: Icon(Icons.search))
+            ],
+          ),
+          if (searchResult.length > 0)
+            Expanded(
+                child: ListView.builder(
+                    itemCount: searchResult.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        leading: CircleAvatar(
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(70),
+                              child:
+                                  Image.network(searchResult[index]['image'])),
+                        ),
+                        title: Text(searchResult[index]['name']),
+                        subtitle: Text(searchResult[index]['email']),
+                        trailing: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                searchController.text = "";
+                              });
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ChatScreen(
+                                    currentUser: widget.user,
+                                    friendId: searchResult[index]['uid'],
+                                    friendName: searchResult[index]['name'],
+                                    friendImage: searchResult[index]['image'],
+                                  ),
+                                ),
+                              );
+                            },
+                            icon: Icon(Icons.message)),
+                      );
+                    }))
+          else if (isLoading == true)
+            Center(
+              child: CircularProgressIndicator(),
+            )
+        ],
       ),
     );
   }
