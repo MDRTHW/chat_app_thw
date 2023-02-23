@@ -44,6 +44,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
               GestureDetector(
                 onTap: () async {
                   String message = _controller.text;
+
                   _controller.clear();
                   await FirebaseFirestore.instance
                       .collection('users')

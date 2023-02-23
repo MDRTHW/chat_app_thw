@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:first_chat_app/encryption_decryption/key_generator.dart';
 import 'package:first_chat_app/widgets/message_textfield.dart';
 import 'package:first_chat_app/widgets/single_message.dart';
 import 'package:flutter/material.dart';
-
+import 'package:rsa_encrypt/rsa_encrypt.dart';
+import 'package:pointycastle/api.dart' as crypto;
 import '../models/user_model.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -19,6 +21,8 @@ class ChatScreen extends StatelessWidget {
     required this.friendImage,
   });
 
+  KeyGenerator key_generate = KeyGenerator();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,23 +30,41 @@ class ChatScreen extends StatelessWidget {
         backgroundColor: Colors.teal,
         title: Row(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(80),
-              child: CachedNetworkImage(
-                imageUrl: friendImage,
-                placeholder: (context, url) => CircularProgressIndicator(),
-                errorWidget: (context, url, error) => Icon(Icons.error_outline),
-                height: 40,
-                width: 40,
+            Expanded(
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(80),
+                    child: CachedNetworkImage(
+                      imageUrl: friendImage,
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                      errorWidget: (context, url, error) =>
+                          Icon(Icons.error_outline),
+                      height: 40,
+                      width: 40,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Text(
+                    friendName,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ],
               ),
             ),
             SizedBox(
               width: 15,
             ),
-            Text(
-              friendName,
-              style: TextStyle(fontSize: 20),
-            ),
+            IconButton(
+                onPressed: () {
+                  key_generate.getKeyPair();
+                  // print(encodePrivateKeyToPemPKCS1(
+                  //     key_generate.keyPair.privateKey));
+                },
+                icon: Icon(Icons.key))
           ],
         ),
       ),
@@ -101,4 +123,6 @@ class ChatScreen extends StatelessWidget {
       ),
     );
   }
+
+  // Object? encodePrivateKeyToPemPKCS1(crypto.PrivateKey privateKey) {}
 }
