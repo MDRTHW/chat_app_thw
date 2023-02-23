@@ -1,27 +1,23 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:first_chat_app/encryption_decryption/key_generator.dart';
 import 'package:first_chat_app/widgets/message_textfield.dart';
 import 'package:first_chat_app/widgets/single_message.dart';
 import 'package:flutter/material.dart';
-import 'package:rsa_encrypt/rsa_encrypt.dart';
-import 'package:pointycastle/api.dart' as crypto;
 import '../models/user_model.dart';
+import '../utilities/rsa_brain.dart';
 
 class ChatScreen extends StatelessWidget {
   final UserModel currentUser;
   final String friendId;
   final String friendName;
   final String friendImage;
-
+  late RSABrain _myRsaBrain = RSABrain();
   ChatScreen({
     required this.currentUser,
     required this.friendId,
     required this.friendName,
     required this.friendImage,
   });
-
-  KeyGenerator key_generate = KeyGenerator();
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +56,7 @@ class ChatScreen extends StatelessWidget {
             ),
             IconButton(
                 onPressed: () {
-                  key_generate.getKeyPair();
-                  // print(encodePrivateKeyToPemPKCS1(
-                  //     key_generate.keyPair.privateKey));
+                  print(_myRsaBrain.getOwnPublicKey());
                 },
                 icon: Icon(Icons.key))
           ],

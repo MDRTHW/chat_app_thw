@@ -37,6 +37,7 @@ dependencies:
   cloud_firestore: ^4.0.1
   cached_network_image: ^3.2.3
   rsa_encrypt: ^2.0.0
+  crypton: ^2.1.0
 
 
   # The following adds the Cupertino Icons font to your application.

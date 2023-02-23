@@ -12,6 +12,7 @@ class MessageTextField extends StatefulWidget {
 
 class _MessageTextFieldState extends State<MessageTextField> {
   TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
