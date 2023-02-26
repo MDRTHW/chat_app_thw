@@ -1,17 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:first_chat_app/encryption_decryption/my_encryption.dart';
 import 'package:first_chat_app/widgets/message_textfield.dart';
 import 'package:first_chat_app/widgets/single_message.dart';
 import 'package:flutter/material.dart';
 import '../models/user_model.dart';
-import '../utilities/rsa_brain.dart';
+
 
 class ChatScreen extends StatelessWidget {
   final UserModel currentUser;
   final String friendId;
   final String friendName;
   final String friendImage;
-  late RSABrain _myRsaBrain = RSABrain();
+
   ChatScreen({
     required this.currentUser,
     required this.friendId,
@@ -54,11 +55,6 @@ class ChatScreen extends StatelessWidget {
             SizedBox(
               width: 15,
             ),
-            IconButton(
-                onPressed: () {
-                  print(_myRsaBrain.getOwnPublicKey());
-                },
-                icon: Icon(Icons.key))
           ],
         ),
       ),

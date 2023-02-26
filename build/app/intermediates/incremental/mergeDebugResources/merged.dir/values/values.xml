@@ -124,16 +124,16 @@
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="copy_toast_msg">Link copied to clipboard</string>
-    <string name="default_web_client_id" translatable="false">1087528577569-9ev4iq2hc01e7evcfaj7l60v9h05692t.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">587670394696-pf3efsto5ofbtcvuhuc20va1ndrf3ge4.apps.googleusercontent.com</string>
     <string name="fallback_menu_item_copy_link">Copy link</string>
     <string name="fallback_menu_item_open_in_browser">Open in browser</string>
     <string name="fallback_menu_item_share_link">Share link</string>
-    <string name="gcm_defaultSenderId" translatable="false">1087528577569</string>
-    <string name="google_api_key" translatable="false">AIzaSyAT3itF6t2jUbG20lXTISDOFeIE7Y26l1I</string>
-    <string name="google_app_id" translatable="false">1:1087528577569:android:e728435d21ac967fda5160</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAT3itF6t2jUbG20lXTISDOFeIE7Y26l1I</string>
-    <string name="google_storage_bucket" translatable="false">first-chat-app-4b601.appspot.com</string>
-    <string name="project_id" translatable="false">first-chat-app-4b601</string>
+    <string name="gcm_defaultSenderId" translatable="false">587670394696</string>
+    <string name="google_api_key" translatable="false">AIzaSyA0bn5uk5oP7J8kG4z3RLBbWksB9KWm_kw</string>
+    <string name="google_app_id" translatable="false">1:587670394696:android:99ef0982f06998e499457d</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA0bn5uk5oP7J8kG4z3RLBbWksB9KWm_kw</string>
+    <string name="google_storage_bucket" translatable="false">chat-app-thw.appspot.com</string>
+    <string name="project_id" translatable="false">chat-app-thw</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <!-- Show a splash screen on the activity. Automatically removed when

@@ -1,44 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/md.rahat/Documents/GitHub/chat_app_thw/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-uk/values-uk.xml",
+            "outputFile": "D:\\All githubs\\chat_app_thw\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-uk\\values-uk.xml",
             "map": [
                 {
-                    "source": "/Users/md.rahat/.gradle/caches/transforms-3/38e30c664341fe5bfcc1d9de04582443/transformed/browser-1.4.0/res/values-uk/values-uk.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,165,272,392",
-                        "endColumns": "109,106,119,107",
-                        "endOffsets": "160,267,387,495"
-                    },
-                    "to": {
-                        "startLines": "20,21,22,23",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "2281,2391,2498,2618",
-                        "endColumns": "109,106,119,107",
-                        "endOffsets": "2386,2493,2613,2721"
-                    }
-                },
-                {
-                    "source": "/Users/md.rahat/.gradle/caches/transforms-3/aa701b47cec244085d46a1a42fcc7fb9/transformed/core-1.6.0/res/values-uk/values-uk.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "24",
-                        "startColumns": "4",
-                        "startOffsets": "2726",
-                        "endColumns": "100",
-                        "endOffsets": "2822"
-                    }
-                },
-                {
-                    "source": "/Users/md.rahat/.gradle/caches/transforms-3/19fea4fb28dedd992824e13cc158e7a1/transformed/jetified-play-services-base-18.0.1/res/values-uk/values.xml",
+                    "source": "C:\\Users\\MD. RAHAT\\.gradle\\caches\\transforms-3\\a2574fde884d7bbb49ebfb82dcc1f186\\transformed\\jetified-play-services-base-18.0.1\\res\\values-uk\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -55,7 +21,41 @@
                     }
                 },
                 {
-                    "source": "/Users/md.rahat/.gradle/caches/transforms-3/3ee0f8915dc9bf42c60f3eef0b7bd28a/transformed/jetified-play-services-basement-18.1.0/res/values-uk/values.xml",
+                    "source": "C:\\Users\\MD. RAHAT\\.gradle\\caches\\transforms-3\\e492d7e9d3042c0cbe27efb005c63224\\transformed\\core-1.6.0\\res\\values-uk\\values-uk.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "24",
+                        "startColumns": "4",
+                        "startOffsets": "2726",
+                        "endColumns": "100",
+                        "endOffsets": "2822"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\MD. RAHAT\\.gradle\\caches\\transforms-3\\6b150f6e7a7ef2011bfb3c7bd8ec26a8\\transformed\\browser-1.4.0\\res\\values-uk\\values-uk.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,165,272,392",
+                        "endColumns": "109,106,119,107",
+                        "endOffsets": "160,267,387,495"
+                    },
+                    "to": {
+                        "startLines": "20,21,22,23",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "2281,2391,2498,2618",
+                        "endColumns": "109,106,119,107",
+                        "endOffsets": "2386,2493,2613,2721"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\MD. RAHAT\\.gradle\\caches\\transforms-3\\d9b0f7d627df9608e326e606b3a2b4a5\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-uk\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",

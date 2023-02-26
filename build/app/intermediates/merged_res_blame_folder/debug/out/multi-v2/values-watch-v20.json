@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/md.rahat/Documents/GitHub/chat_app_thw/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "D:\\All githubs\\chat_app_thw\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
-                    "source": "/Users/md.rahat/.gradle/caches/transforms-3/66e089c069618d46ecbcfc30035e5ab3/transformed/jetified-play-services-auth-20.0.1/res/values-watch-v20/values.xml",
+                    "source": "C:\\Users\\MD. RAHAT\\.gradle\\caches\\transforms-3\\eda18fd95bb2e21ed00624e6a19925c2\\transformed\\jetified-play-services-auth-20.4.1\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",

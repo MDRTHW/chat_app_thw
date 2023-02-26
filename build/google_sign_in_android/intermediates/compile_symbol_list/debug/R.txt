@@ -32,6 +32,7 @@ int attr fontWeight 0x0
 int attr imageAspectRatio 0x0
 int attr imageAspectRatioAdjust 0x0
 int attr keylines 0x0
+int attr lStar 0x0
 int attr layout_anchor 0x0
 int attr layout_anchorGravity 0x0
 int attr layout_behavior 0x0
@@ -197,6 +198,10 @@ int id icon_group 0x0
 int id icon_only 0x0
 int id info 0x0
 int id italic 0x0
+int id item1 0x0
+int id item2 0x0
+int id item3 0x0
+int id item4 0x0
 int id left 0x0
 int id light 0x0
 int id line1 0x0
@@ -210,6 +215,7 @@ int id normal 0x0
 int id notification_background 0x0
 int id notification_main_column 0x0
 int id notification_main_column_container 0x0
+int id report_drawn 0x0
 int id right 0x0
 int id right_icon 0x0
 int id right_side 0x0
@@ -237,6 +243,7 @@ int id time 0x0
 int id title 0x0
 int id top 0x0
 int id view_tree_lifecycle_owner 0x0
+int id view_tree_on_back_pressed_dispatcher_owner 0x0
 int id view_tree_saved_state_registry_owner 0x0
 int id view_tree_view_model_store_owner 0x0
 int id visible_removing_fragment_view_tag 0x0
@@ -260,6 +267,8 @@ int layout notification_template_media 0x0
 int layout notification_template_media_custom 0x0
 int layout notification_template_part_chronometer 0x0
 int layout notification_template_part_time 0x0
+int menu example_menu 0x0
+int menu example_menu2 0x0
 int string common_google_play_services_enable_button 0x0
 int string common_google_play_services_enable_text 0x0
 int string common_google_play_services_enable_title 0x0
@@ -300,10 +309,12 @@ int styleable ActivityRule_alwaysExpand 0
 int[] styleable Capability { 0x0, 0x0 }
 int styleable Capability_queryPatterns 0
 int styleable Capability_shortcutMatchRequired 1
-int[] styleable ColorStateListItem { 0x0, 0x101031f, 0x10101a5 }
+int[] styleable ColorStateListItem { 0x0, 0x101031f, 0x10101a5, 0x1010647, 0x0 }
 int styleable ColorStateListItem_alpha 0
 int styleable ColorStateListItem_android_alpha 1
 int styleable ColorStateListItem_android_color 2
+int styleable ColorStateListItem_android_lStar 3
+int styleable ColorStateListItem_lStar 4
 int[] styleable CoordinatorLayout { 0x0, 0x0 }
 int styleable CoordinatorLayout_keylines 0
 int styleable CoordinatorLayout_statusBarBackground 1

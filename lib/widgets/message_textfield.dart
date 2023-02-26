@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:first_chat_app/encryption_decryption/my_encryption.dart';
 import 'package:flutter/material.dart';
 
 class MessageTextField extends StatefulWidget {
@@ -45,7 +46,11 @@ class _MessageTextFieldState extends State<MessageTextField> {
               GestureDetector(
                 onTap: () async {
                   String message = _controller.text;
-
+                  // String buffer_message = _controller.text;
+                  // var message = MyEncryptionDecryption.encryptAES(buffer_message);
+                  // print(message.toString());
+                  //  var de = MyEncryptionDecryption.decryptAES(message);
+                  //  print(de.toString());
                   _controller.clear();
                   await FirebaseFirestore.instance
                       .collection('users')
@@ -56,7 +61,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                       .add({
                     "senderId": widget.currentId,
                     "receiverId": widget.friendId,
-                    "message": message,
+                    "message": message.toString(),
                     "type": "text",
                     "date": DateTime.now()
                   }).then((value) {

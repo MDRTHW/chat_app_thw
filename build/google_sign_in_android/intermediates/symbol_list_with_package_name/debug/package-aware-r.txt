@@ -33,6 +33,7 @@ attr fontWeight
 attr imageAspectRatio
 attr imageAspectRatioAdjust
 attr keylines
+attr lStar
 attr layout_anchor
 attr layout_anchorGravity
 attr layout_behavior
@@ -198,6 +199,10 @@ id icon_group
 id icon_only
 id info
 id italic
+id item1
+id item2
+id item3
+id item4
 id left
 id light
 id line1
@@ -211,6 +216,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id report_drawn
 id right
 id right_icon
 id right_side
@@ -238,6 +244,7 @@ id time
 id title
 id top
 id view_tree_lifecycle_owner
+id view_tree_on_back_pressed_dispatcher_owner
 id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
 id visible_removing_fragment_view_tag
@@ -261,6 +268,8 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+menu example_menu
+menu example_menu2
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
 string common_google_play_services_enable_title
@@ -296,7 +305,7 @@ style Widget_Support_CoordinatorLayout
 styleable ActivityFilter activityAction activityName
 styleable ActivityRule alwaysExpand
 styleable Capability queryPatterns shortcutMatchRequired
-styleable ColorStateListItem alpha android_alpha android_color
+styleable ColorStateListItem alpha android_alpha android_color android_lStar lStar
 styleable CoordinatorLayout keylines statusBarBackground
 styleable CoordinatorLayout_Layout android_layout_gravity layout_anchor layout_anchorGravity layout_behavior layout_dodgeInsetEdges layout_insetEdge layout_keyline
 styleable DrawerLayout elevation
