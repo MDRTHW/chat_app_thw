@@ -6,6 +6,7 @@ class MessageTextField extends StatefulWidget {
   final String currentId;
   final String friendId;
 
+
   MessageTextField({required this.currentId, required this.friendId});
   @override
   State<MessageTextField> createState() => _MessageTextFieldState();
@@ -13,6 +14,7 @@ class MessageTextField extends StatefulWidget {
 
 class _MessageTextFieldState extends State<MessageTextField> {
   TextEditingController _controller = TextEditingController();
+  MyEncryptionDecryption encrypt_decrypt= MyEncryptionDecryption();
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +47,15 @@ class _MessageTextFieldState extends State<MessageTextField> {
               ),
               GestureDetector(
                 onTap: () async {
-                  String message = _controller.text;
-                  // String buffer_message = _controller.text;
-                  // var message = MyEncryptionDecryption.encryptAES(buffer_message);
-                  // print(message.toString());
-                  //  var de = MyEncryptionDecryption.decryptAES(message);
-                  //  print(de.toString());
+                  // String message = _controller.text;
+                  String buffer_message = _controller.text;
+                  print(buffer_message);
+                  
+                  print(MyEncryptionDecryption.encryptFernet(buffer_message));
+
+                  String message = buffer_message;
+
+
                   _controller.clear();
                   await FirebaseFirestore.instance
                       .collection('users')
