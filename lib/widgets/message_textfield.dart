@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:encrypt/encrypt.dart' as enc;
 import 'package:first_chat_app/encryption_decryption/my_encryption.dart';
 import 'package:flutter/material.dart';
 
@@ -6,15 +7,15 @@ class MessageTextField extends StatefulWidget {
   final String currentId;
   final String friendId;
 
-
   MessageTextField({required this.currentId, required this.friendId});
+
   @override
   State<MessageTextField> createState() => _MessageTextFieldState();
 }
 
 class _MessageTextFieldState extends State<MessageTextField> {
   TextEditingController _controller = TextEditingController();
-  MyEncryptionDecryption encrypt_decrypt= MyEncryptionDecryption();
+  MyEncryptionDecryption encrypt_decrypt = MyEncryptionDecryption();
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +51,12 @@ class _MessageTextFieldState extends State<MessageTextField> {
                   // String message = _controller.text;
                   String buffer_message = _controller.text;
                   print(buffer_message);
-                  
-                  print(MyEncryptionDecryption.encryptFernet(buffer_message));
+
+                  print((MyEncryptionDecryption.encryptAES(buffer_message)
+                          as enc.Encrypted)
+                      .base64);
 
                   String message = buffer_message;
-
 
                   _controller.clear();
                   await FirebaseFirestore.instance

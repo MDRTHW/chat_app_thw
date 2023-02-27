@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\All githubs\\chat_app_thw\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "E:\\Flutter Projects\\OnGoingProjects\\chat_app_thw\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\MD. RAHAT\\.gradle\\caches\\transforms-3\\e492d7e9d3042c0cbe27efb005c63224\\transformed\\core-1.6.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-3\\e492d7e9d3042c0cbe27efb005c63224\\transformed\\core-1.6.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

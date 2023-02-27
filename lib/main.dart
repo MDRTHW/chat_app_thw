@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        debugShowCheckedModeBanner: false,
         home: FutureBuilder(
             future: userSignedIn(),
             builder: (context, AsyncSnapshot<Widget> snapshot) {

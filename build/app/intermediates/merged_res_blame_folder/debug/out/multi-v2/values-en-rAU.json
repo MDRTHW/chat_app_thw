@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\All githubs\\chat_app_thw\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rAU\\values-en-rAU.xml",
+            "outputFile": "E:\\Flutter Projects\\OnGoingProjects\\chat_app_thw\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rAU\\values-en-rAU.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\MD. RAHAT\\.gradle\\caches\\transforms-3\\6b150f6e7a7ef2011bfb3c7bd8ec26a8\\transformed\\browser-1.4.0\\res\\values-en-rAU\\values-en-rAU.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,153,250,359",
-                        "endColumns": "97,96,108,98",
-                        "endOffsets": "148,245,354,453"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\MD. RAHAT\\.gradle\\caches\\transforms-3\\e492d7e9d3042c0cbe27efb005c63224\\transformed\\core-1.6.0\\res\\values-en-rAU\\values-en-rAU.xml",
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-3\\e492d7e9d3042c0cbe27efb005c63224\\transformed\\core-1.6.0\\res\\values-en-rAU\\values-en-rAU.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -28,6 +18,16 @@
                         "startOffsets": "458",
                         "endColumns": "100",
                         "endOffsets": "554"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-3\\6b150f6e7a7ef2011bfb3c7bd8ec26a8\\transformed\\browser-1.4.0\\res\\values-en-rAU\\values-en-rAU.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,153,250,359",
+                        "endColumns": "97,96,108,98",
+                        "endOffsets": "148,245,354,453"
                     }
                 }
             ]

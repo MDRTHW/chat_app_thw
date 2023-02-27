@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\All githubs\\chat_app_thw\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "E:\\Flutter Projects\\OnGoingProjects\\chat_app_thw\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "D:\\All githubs\\chat_app_thw\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "E:\\Flutter Projects\\OnGoingProjects\\chat_app_thw\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
